@@ -25,21 +25,21 @@ some of the 60+ [available languages](https://spacy.io/usage/models#languages).
 ### Part 1: English
 
 - Use `spacy.blank` to create a blank English (`"en"`) `nlp` object.
-- Create a `doc` and print its text.
+- Use the 'nlp' object to create a `Doc` object assigned to the variable `doc`, then print its text.
 
 <codeblock id="01_02_01"></codeblock>
 
 ### Part 2: German
 
 - Use `spacy.blank` to create a blank German (`"de"`) `nlp` object.
-- Create a `doc` and print its text.
+- Use the 'nlp' object to create a `Doc` object assigned to the variable `doc`, then print its text.
 
 <codeblock id="01_02_02"></codeblock>
 
 ### Part 3: Spanish
 
 - Use `spacy.blank` to create a blank Spanish (`"es"`) `nlp` object.
-- Create a `doc` and print its text.
+- Use the 'nlp' object to create a `Doc` object assigned to the variable `doc`, then print its text.
 
 <codeblock id="01_02_03"></codeblock>
 
@@ -48,13 +48,13 @@ some of the 60+ [available languages](https://spacy.io/usage/models#languages).
 <exercise id="3" title="Documents, spans and tokens">
 
 When you call `nlp` on a string, spaCy first tokenizes the text and creates a
-document object. In this exercise, you'll learn more about the `Doc`, as well as
+document object or `Doc`. In this exercise, you'll learn more about the `Doc` object, as well as
 its views `Token` and `Span`.
 
 ### Step 1
 
 - Use `spacy.blank` to create the English `nlp` object.
-- Process the text and instantiate a `Doc` object in the variable `doc`.
+- Use `nlp` to process the text and instantiate a `Doc` object in the variable `doc`.
 - Select the first token of the `Doc` and print its `text`.
 
 <codeblock id="01_03_01">
@@ -68,7 +68,7 @@ in the text. Remember that in Python the first index is 0, not 1.
 ### Step 2
 
 - Use `spacy.blank` to create the English `nlp` object.
-- Process the text and instantiate a `Doc` object in the variable `doc`.
+- Use 'nlp' to process the text and instantiate a `Doc` object in the variable `doc`.
 - Create a slice of the `Doc` for the tokens "tree kangaroos" and "tree
   kangaroos and narwhals".
 
@@ -89,15 +89,15 @@ In this example, you'll use spaCy's `Doc` and `Token` objects, and lexical
 attributes to find percentages in a text. You'll be looking for two subsequent
 tokens: a number and a percent sign.
 
-- Use the `like_num` token attribute to check whether a token in the `doc`
+- Use the `like_num` token attribute to check whether a token in the `Doc`
   resembles a number.
 - Get the token _following_ the current token in the document. The index of the
-  next token in the `doc` is `token.i + 1`.
+  next token in the `Doc` is `token.i + 1`.
 - Check whether the next token's `text` attribute is a percent sign "%".
 
 <codeblock id="01_04">
 
-To get the token at a certain index, you can index into the `doc`. For example,
+To get the token at a certain index, you can index into the `Doc`. For example,
 `doc[5]` is the token at index 5.
 
 </codeblock>
@@ -175,13 +175,13 @@ example: `spacy.explain("PROPN")` or `spacy.explain("GPE")`.
 
 ### Part 1
 
-- Process the text with the `nlp` object and create a `doc`.
+- Process the text with the `nlp` object and create a `Doc` object named 'doc'.
 - For each token, print the token text, the token's `.pos_` (part-of-speech tag)
   and the token's `.dep_` (dependency label).
 
 <codeblock id="01_08_01">
 
-To create a `doc`, call the `nlp` object on a string of text. Remember that you
+To create a `Doc` object, call the `nlp` object on a string of text. Remember that you
 need to use the token attribute names with an underscore to get the string
 values.
 
@@ -189,12 +189,12 @@ values.
 
 ### Part 2
 
-- Process the text and create a `doc` object.
+- Process the text and create a `Doc` object named `doc`.
 - Iterate over the `doc.ents` and print the entity text and `label_` attribute.
 
 <codeblock id="01_08_02">
 
-To create a `doc`, call the `nlp` object on a string of text. Remember that you
+To create a `Doc` object, call the `nlp` object on a string of text. Remember that you
 need to use the token attribute names with an underscore to get the string
 values.
 
@@ -215,7 +215,7 @@ a look at an example.
 
 <codeblock id="01_09">
 
-- To create a `doc`, call the `nlp` object on the text. Named entities are
+- To create a `Doc` object, call the `nlp` object on the text. Named entities are
   available as the `doc.ents` property.
 - The easiest way to create a `Span` object is to use the slice notation – for
   example `doc[5:10]` for the token at position 5 _up to_ position 10. Remember
@@ -243,7 +243,7 @@ the text.
 - Create a pattern that matches the `"TEXT"` values of two tokens: `"iPhone"`
   and `"X"`.
 - Use the `matcher.add` method to add the pattern to the matcher.
-- Call the matcher on the `doc` and store the result in the variable `matches`.
+- Call the matcher on `doc` and store the result in the variable `matches`.
 - Iterate over the matches and get the matched span from the `start` to the
   `end` index.
 
@@ -253,7 +253,7 @@ the text.
 - A pattern is a list of dictionaries keyed by the attribute names. For example,
   `[{"TEXT": "Hello"}]` will match one token whose exact text is "Hello".
 - The `start` and `end` values of each match describe the start and end index of
-  the matched span. To get the span, you can create a slice of the `doc` using
+  the matched span. To get the span, you can create a slice of `doc` using
   the given start and end.
 
 </codeblock>
